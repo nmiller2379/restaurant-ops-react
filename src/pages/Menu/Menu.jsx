@@ -10,7 +10,6 @@ import { nextId } from "../../utils/nextId";
 import restaurantContext from "../../context/RestaurantContext";
 
 export default function Menu() {
-  // TODO: Implement the Menu page functionality, including displaying the menu list, handling menu form submissions, and editing menu items.
   const { dispatch, state } = useContext(restaurantContext);
   const [showModal, setShowModal] = useState(null);
   const [alert, setAlert] = useState({ show: false, message: "", variant: "" });
