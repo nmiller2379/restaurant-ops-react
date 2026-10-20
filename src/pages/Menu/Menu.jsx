@@ -13,6 +13,7 @@ export default function Menu() {
   const { dispatch, state } = useContext(restaurantContext);
   const [showModal, setShowModal] = useState(null);
   const [alert, setAlert] = useState({ show: false, message: "", variant: "" });
+  const showAlert = alert.show;
   const [displayForm, setDisplayForm] = useState(false);
 
   const handleMenuFormSubmit = (formData) => {
@@ -60,7 +61,17 @@ export default function Menu() {
           <Card.Body>{/* <MenuList /> */}</Card.Body>
         </Card>
       </div>
+      {/* Search Menu Items Component */}
       {/* Edit Menu Modal */}
+      {showAlert && (
+        <Alert
+          variant={alert.variant}
+          onClose={() => setAlert({ ...alert, show: false })}
+          dismissible
+        >
+          {alert.message}
+        </Alert>
+      )}
     </>
   );
 }
