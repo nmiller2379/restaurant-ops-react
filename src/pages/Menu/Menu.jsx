@@ -32,6 +32,14 @@ export default function Menu() {
     });
   };
 
+  const handleToggle = (id) => {
+    dispatch({ type: "TOGGLE_MENU_ITEM", payload: { id } });
+  };
+
+  const handleDelete = (id) => {
+    dispatch({ type: "REMOVE_MENU_ITEM", payload: { id } });
+  };
+
   return (
     <>
       <Header text="Menu" />
@@ -62,7 +70,18 @@ export default function Menu() {
         </Card>
       </div>
       {/* Search Menu Items Component */}
-      {/* Edit Menu Modal */}
+      <div>
+        <Card>
+          <Card.Body>
+            <MenuList
+              menuItems={state.menuItems}
+              handleEdit={(id) => setShowModal(id)}
+              handleToggle={handleToggle}
+              handleDelete={handleDelete}
+            />
+          </Card.Body>
+        </Card>
+      </div>
       {showAlert && (
         <Alert
           variant={alert.variant}

@@ -7,6 +7,7 @@ function menuItemsReducer(state, action) {
         menuItems: [...state.menuItems, action.payload],
       };
     case "TOGGLE_MENU_ITEM":
+      console.log("Toggling menu item:", action.payload);
       return {
         ...state,
         menuItems: state.menuItems.map((item) =>
