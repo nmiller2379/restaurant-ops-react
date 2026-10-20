@@ -1,6 +1,4 @@
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Alert from "react-bootstrap/Alert";
+import { Card, Button, Alert } from "react-bootstrap";
 import TableForm from "../../components/TableForm/TableForm";
 import TableList from "../../components/TableList/TableList";
 import EditTableModal from "../../components/EditTableModal/EditTableModal";

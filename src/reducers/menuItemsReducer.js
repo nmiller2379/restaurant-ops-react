@@ -1,6 +1,7 @@
 function menuItemsReducer(state, action) {
   switch (action.type) {
     case "ADD_MENU_ITEM":
+      console.log("Adding menu item:", action.payload);
       return {
         ...state,
         menuItems: [...state.menuItems, action.payload],
