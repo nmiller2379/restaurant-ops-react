@@ -21,6 +21,7 @@ export function nextId(array) {
 }
 
 export function formatCurrency(value) {
+  console.log("Formatting currency value:", value);
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",

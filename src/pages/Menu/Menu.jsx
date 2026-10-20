@@ -5,7 +5,7 @@ import EditMenuModal from "../../components/MenuModal/MenuModal";
 import Header from "../../components/Header/Header";
 import { useState } from "react";
 import { useContext } from "react";
-import { nextId, formatCurrency } from "../../utils/nextId";
+import { nextId } from "../../utils/nextId";
 import restaurantContext from "../../context/RestaurantContext";
 
 export default function Menu() {
@@ -21,7 +21,7 @@ export default function Menu() {
     const menuItem = {
       ...formData,
       id: nextId(state.menuItems),
-      price: formatCurrency(parseFloat(formData.price)),
+      price: parseFloat(formData.price),
     };
     dispatch({ type: "ADD_MENU_ITEM", payload: menuItem });
     setDisplayForm(false);

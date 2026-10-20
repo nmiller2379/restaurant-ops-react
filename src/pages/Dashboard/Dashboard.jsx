@@ -65,7 +65,7 @@ export default function Dashboard() {
                       <div className="metric-value">
                         {formatCurrency(
                           state.menuItems.reduce(
-                            (total, item) => total + item.price,
+                            (total, item) => total + parseFloat(item.price),
                             0,
                           ) / (state.menuItems.length || 1),
                         )}
