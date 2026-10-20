@@ -7,7 +7,6 @@ function menuItemsReducer(state, action) {
         menuItems: [...state.menuItems, action.payload],
       };
     case "TOGGLE_MENU_ITEM":
-      console.log("Toggling menu item:", action.payload);
       return {
         ...state,
         menuItems: state.menuItems.map((item) =>
@@ -21,6 +20,13 @@ function menuItemsReducer(state, action) {
         ...state,
         menuItems: state.menuItems.filter(
           (item) => item.id !== action.payload.id,
+        ),
+      };
+    case "EDIT_MENU_ITEM":
+      return {
+        ...state,
+        menuItems: state.menuItems.map((item) =>
+          item.id === action.payload.id ? { ...item, ...action.payload } : item,
         ),
       };
     default:

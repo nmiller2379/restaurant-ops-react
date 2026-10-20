@@ -23,7 +23,7 @@ export default function MenuForm({
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter menu item name"
+                placeholder={initialValue.name || "Enter menu item name"}
                 value={formData.name}
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
@@ -36,7 +36,7 @@ export default function MenuForm({
               <Form.Label>Category</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter category"
+                placeholder={initialValue.category || "Enter category"}
                 value={formData.category}
                 onChange={(e) =>
                   setFormData({ ...formData, category: e.target.value })
@@ -49,7 +49,7 @@ export default function MenuForm({
               <Form.Label>Price</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter price"
+                placeholder={initialValue.price || "Enter price"}
                 value={formData.price}
                 onChange={(e) =>
                   setFormData({
@@ -78,7 +78,7 @@ export default function MenuForm({
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                   as="textarea"
-                  placeholder="Enter description"
+                  placeholder={initialValue.description || "Enter description"}
                   value={formData.description}
                   onChange={(e) =>
                     setFormData({ ...formData, description: e.target.value })
@@ -97,7 +97,7 @@ export default function MenuForm({
             onSubmit(formData);
           }}
         >
-          Add Menu Item
+          {initialValue.id ? "Save Changes" : "Add Menu Item"}
         </Button>
         <Button variant="secondary" type="button" onClick={onCancel}>
           Cancel

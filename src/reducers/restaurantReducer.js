@@ -13,7 +13,7 @@ export default function restaurantReducer(state, action) {
     case "ADD_MENU_ITEM":
     case "TOGGLE_MENU_ITEM":
     case "REMOVE_MENU_ITEM":
-      console.log("Handling menu item action:", action);
+    case "EDIT_MENU_ITEM":
       return {
         ...state,
         ...menuItemsReducer({ menuItems: state.menuItems }, action),

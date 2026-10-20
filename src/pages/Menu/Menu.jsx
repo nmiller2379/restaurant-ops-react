@@ -1,7 +1,8 @@
 import { Card, Button, Alert } from "react-bootstrap";
 import MenuForm from "../../components/MenuForm/MenuForm";
 import MenuList from "../../components/MenuList/MenuList";
-import EditMenuModal from "../../components/MenuModal/MenuModal";
+import MenuModal from "../../components/MenuModal/MenuModal";
+import MenuSearch from "../../components/MenuSearch/MenuSearch";
 import Header from "../../components/Header/Header";
 import { useState } from "react";
 import { useContext } from "react";
@@ -14,7 +15,8 @@ export default function Menu() {
   const [showModal, setShowModal] = useState(null);
   const [alert, setAlert] = useState({ show: false, message: "", variant: "" });
   const showAlert = alert.show;
-  const [displayForm, setDisplayForm] = useState(false);
+  const [displayForm, setDisplayForm] = useState(null);
+  const [displaySearch, setDisplaySearch] = useState(false);
 
   const handleMenuFormSubmit = (formData) => {
     console.log("Form data submitted:", formData);
@@ -38,6 +40,15 @@ export default function Menu() {
 
   const handleDelete = (id) => {
     dispatch({ type: "REMOVE_MENU_ITEM", payload: { id } });
+  };
+
+  const handleSearch = (searchValue, category) => {
+    const searchResults = state.menuItems.filter(
+      (item) =>
+        item.name.toLowerCase().includes(searchValue.toLowerCase()) &&
+        (category ? item.category === category : true),
+    );
+    setDisplaySearch(searchResults);
   };
 
   return (
@@ -64,17 +75,13 @@ export default function Menu() {
         )}
       </div>
       <div>
-        <Card>
-          <Card.Title>Menu Items</Card.Title>
-          <Card.Body>{/* <MenuList /> */}</Card.Body>
-        </Card>
+        <MenuSearch menuItems={state.menuItems} handleSearch={handleSearch} />
       </div>
-      {/* Search Menu Items Component */}
       <div>
         <Card>
           <Card.Body>
             <MenuList
-              menuItems={state.menuItems}
+              menuItems={displaySearch ? displaySearch : state.menuItems}
               handleEdit={(id) => setShowModal(id)}
               handleToggle={handleToggle}
               handleDelete={handleDelete}
@@ -82,6 +89,14 @@ export default function Menu() {
           </Card.Body>
         </Card>
       </div>
+      <MenuModal
+        show={showModal !== null}
+        onHide={() => setShowModal(null)}
+        menuItem={state.menuItems.find((item) => item.id === showModal)}
+        handleSubmit={(data) => {
+          dispatch({ type: "EDIT_MENU_ITEM", payload: data });
+        }}
+      />
       {showAlert && (
         <Alert
           variant={alert.variant}
