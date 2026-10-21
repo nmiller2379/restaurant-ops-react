@@ -1,0 +1,33 @@
+.nav {
+  background: var(--surface);
+  border-color: var(--border-soft) !important;
+}
+
+.nav :global(.nav-link) {
+  color: var(--ink);
+}
+
+.nav :global(.nav-link):hover {
+  color: var(--brand-dark);
+}
+
+.nav :global(.nav-link.active) {
+  color: #fff;
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.brandTitle {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 1.45rem;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+
+.brandSubtitle {
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

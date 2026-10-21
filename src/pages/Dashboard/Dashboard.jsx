@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Card, Image } from "react-bootstrap";
 import Header from "../../components/Header/Header";
 import { formatCurrency } from "../../utils/nextId";
+import styles from "./Dashboard.module.css";
 import restaurantImage from "../../assets/restaurant-dashboard-image.jpg";
 export default function Dashboard() {
   const { state } = useContext(restaurantContext);
@@ -15,7 +16,7 @@ export default function Dashboard() {
           <Card className="mb-3 mb-md-4">
             <Card.Body className="p-2 p-md-3">
               <Image
-                className="dashboard-hero"
+                className={styles.hero}
                 src={restaurantImage}
                 alt="Dashboard"
                 fluid
@@ -25,44 +26,44 @@ export default function Dashboard() {
           <Container>
             <Row>
               <Col>
-                <Card className="metric-card">
+                <Card>
                   <Card.Body>
-                    <div className="metric-value">{state.tables.length}</div>
-                    <div className="metric-label">Total Tables</div>
+                    <div className={styles.metricValue}>{state.tables.length}</div>
+                    <div className={styles.metricLabel}>Total Tables</div>
                   </Card.Body>
                 </Card>
               </Col>
               <Col>
-                <Card className="metric-card">
+                <Card>
                   <Card.Body>
-                    <div className="metric-value">
+                    <div className={styles.metricValue}>
                       {
                         state.tables.filter(
                           (table) => table.status === "seated",
                         ).length
                       }
                     </div>
-                    <div className="metric-label">Occupied Tables</div>
+                    <div className={styles.metricLabel}>Occupied Tables</div>
                   </Card.Body>
                 </Card>
               </Col>
             </Row>
             <Row>
               <Col>
-                <Card className="metric-card">
+                <Card>
                   <Card.Body>
-                    <div className="metric-value">
+                    <div className={styles.metricValue}>
                       {state.reservations.length}
                     </div>
-                    <div className="metric-label">Total Reservations</div>
+                    <div className={styles.metricLabel}>Total Reservations</div>
                   </Card.Body>
                 </Card>
               </Col>
               <Col>
                 <Col>
-                  <Card className="metric-card">
+                  <Card>
                     <Card.Body>
-                      <div className="metric-value">
+                      <div className={styles.metricValue}>
                         {formatCurrency(
                           state.menuItems.reduce(
                             (total, item) => total + parseFloat(item.price),
@@ -70,7 +71,7 @@ export default function Dashboard() {
                           ) / (state.menuItems.length || 1),
                         )}
                       </div>
-                      <div className="metric-label">Average Menu Price</div>
+                      <div className={styles.metricLabel}>Average Menu Price</div>
                     </Card.Body>
                   </Card>
                 </Col>

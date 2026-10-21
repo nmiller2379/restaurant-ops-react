@@ -1,0 +1,5 @@
+.app-body {
+  background: var(--neutral-bg);
+  color: var(--ink);
+  min-height: 100vh;
+}
