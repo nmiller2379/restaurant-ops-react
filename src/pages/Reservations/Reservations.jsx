@@ -5,6 +5,7 @@ import { Card, Button, Alert } from "react-bootstrap";
 import restaurantContext from "../../context/RestaurantContext";
 import Header from "../../components/Header/Header";
 import ReservationsForm from "../../components/ReservationsForm/ReservationsForm";
+import ReservationList from "../../components/ReservationList/ReservationList";
 
 export default function Reservations() {
   const { dispatch, state } = useContext(restaurantContext);
@@ -78,7 +79,16 @@ export default function Reservations() {
           <Card.Body>{/* Reservations search goes here */}</Card.Body>
         </Card>
         <Card>
-          <Card.Body>{/* Reservations list goes here */}</Card.Body>
+          <Card.Body>
+            <ReservationList
+              reservations={state.reservations}
+              tables={state.tables}
+              handleEdit={(id) => console.log("Edit", id)}
+              handleSeat={(id) => console.log("Seat", id)}
+              handleComplete={(id) => console.log("Complete", id)}
+              handleDelete={(id) => console.log("Delete", id)}
+            />
+          </Card.Body>
         </Card>
       </div>
       {showAlert && (
