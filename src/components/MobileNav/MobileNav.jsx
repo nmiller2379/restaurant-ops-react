@@ -3,6 +3,7 @@ import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
+import styles from "./MobileNav.module.css";
 
 export default function MobileNav() {
   const [show, setShow] = useState(false);
@@ -12,28 +13,31 @@ export default function MobileNav() {
 
   return (
     <>
-      <header className="mobile-header d-block d-md-none">
+      <header className={`d-md-none ${styles.header}`}>
         <Button
-          variant="outline-light"
+          variant="outline-secondary"
+          className={styles.toggle}
           aria-label="Open Navigation Menu"
           onClick={handleShow}
         >
           ☰
         </Button>
-        <span className="ms-3">Copper Table</span>
+        <span className={`ms-3 ${styles.brandTitle}`}>Copper Table</span>
       </header>
 
       <Offcanvas
         show={show}
         onHide={handleClose}
         placement="start"
-        className="mobile-sidebar"
+        className={styles.sidebar}
       >
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Copper Table</Offcanvas.Title>
+          <Offcanvas.Title className={styles.brandTitle}>
+            Copper Table
+          </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Nav>
+          <Nav className={`flex-column ${styles.nav}`}>
             <Nav.Link as={NavLink} to="/" onClick={handleClose}>
               Dashboard
             </Nav.Link>
