@@ -12,6 +12,15 @@ function reservationsReducer(state, action) {
           (reservation) => reservation.id !== action.payload.id,
         ),
       };
+    case "EDIT_RESERVATION":
+      return {
+        ...state,
+        reservations: state.reservations.map((reservation) =>
+          reservation.id === action.payload.id
+            ? { ...reservation, ...action.payload }
+            : reservation,
+        ),
+      };
     default:
       return state;
   }
