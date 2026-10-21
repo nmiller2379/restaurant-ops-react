@@ -6,6 +6,7 @@ import restaurantContext from "../../context/RestaurantContext";
 import Header from "../../components/Header/Header";
 import ReservationsForm from "../../components/ReservationsForm/ReservationsForm";
 import ReservationList from "../../components/ReservationList/ReservationList";
+import ReservationSearch from "../../components/ReservationSearch/ReservationSearch";
 
 export default function Reservations() {
   const { dispatch, state } = useContext(restaurantContext);
@@ -76,7 +77,11 @@ export default function Reservations() {
           </Card>
         )}
         <Card>
-          <Card.Body>{/* Reservations search goes here */}</Card.Body>
+          <Card.Body>
+            <ReservationSearch
+              handleSearch={(value) => console.log("Search", value)}
+            />
+          </Card.Body>
         </Card>
         <Card>
           <Card.Body>
